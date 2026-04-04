@@ -29,7 +29,7 @@
     }
     .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; color: var(--text); text-decoration: none; }
     .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a { font-size: 11.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; font-weight: 400; }
     .nav-links a:hover { color: var(--olive); }
 
     /* HERO */
@@ -51,7 +51,7 @@
     }
     .hero h1 em { font-style: italic; color: var(--olive); }
     .hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
-    .hero-desc { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 440px; }
+    .hero-desc { font-size: 15.5px; color: #444; line-height: 1.75; max-width: 440px; font-weight: 400; }
     .hero-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; flex-shrink: 0; }
     .hero-role { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-align: right; }
     .btn-row { display: flex; gap: 10px; }
@@ -60,7 +60,9 @@
     .btn {
       display: inline-flex; align-items: center; gap: 7px;
       padding: 10px 22px; font-size: 12px; font-family: 'DM Sans', sans-serif;
-      font-weight: 400; letter-spacing: 0.3px; text-decoration: none;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; letter-spacing: 0.3px; text-decoration: none;
       border-radius: 6px; transition: all 0.2s; border: none; cursor: pointer;
     }
     .btn-dark { background: var(--text); color: #fff; }
@@ -77,11 +79,11 @@
 
     /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; width: 100%; }
-    .about-text p { font-size: 15px; color: #333; line-height: 1.85; margin-bottom: 18px; }
+    .about-text p { font-size: 15.5px; color: #1a1a1a; line-height: 1.85; margin-bottom: 18px; font-weight: 400; }
     .about-text strong { color: var(--olive); font-weight: 400; }
     .stat-row { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); }
     .stat-row:first-child { border-top: 1px solid var(--border); }
-    .stat-label { font-size: 11px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+    .stat-label { font-size: 11.5px; letter-spacing: 1px; color: #777; text-transform: uppercase; font-weight: 400; }
     .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--text); text-align: right; }
     .stat-value em { font-style: italic; color: var(--olive); }
 
@@ -93,9 +95,9 @@
     }
     .project-item:first-child { border-top: 1px solid var(--border); }
     .project-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--muted); padding-top: 4px; }
-    .project-type { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--olive); margin-bottom: 10px; }
+    .project-type { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--olive); margin-bottom: 10px; font-weight: 400; }
     .project-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--text); margin-bottom: 14px; line-height: 1.1; }
-    .project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; max-width: 560px; margin-bottom: 20px; }
+    .project-desc { font-size: 14.5px; color: #555; line-height: 1.7; max-width: 560px; margin-bottom: 20px; font-weight: 400; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag { font-size: 11px; padding: 3px 11px; border-radius: 20px; background: var(--olive-l); color: var(--olive); border: 1px solid #ccd8b8; }
     .project-links { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; padding-top: 4px; flex-shrink: 0; }
@@ -108,12 +110,12 @@
     .skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); width: 100%; }
     .skill-cell { background: #fff; padding: 32px 28px; }
     .skill-cell-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--olive); margin-bottom: 20px; }
-    .skill-item { font-size: 13px; color: #333; padding: 7px 0; border-bottom: 1px solid var(--border); }
+    .skill-item { font-size: 13.5px; color: #222; padding: 7px 0; border-bottom: 1px solid var(--border); font-weight: 400; }
     .skill-item:last-child { border-bottom: none; }
 
     /* CONTACT */
     .contact-inner { max-width: 600px; }
-    .contact-text { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 40px; }
+    .contact-text { font-size: 15.5px; color: #444; line-height: 1.8; margin-bottom: 40px; font-weight: 400; }
     .contact-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
     /* FOOTER */
