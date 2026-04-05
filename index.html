@@ -3,314 +3,391 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Xhensilda Allka — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <title>Xhensilda Allka — Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --olive  : #3d5228;
-      --olive-l: #eef2e8;
-      --border : #e4e4e4;
-      --muted  : #888888;
-      --text   : #111111;
+      --olive: #4a5e2a;
+      --olive-light: #5c7533;
+      --olive-bg: #f2f4ec;
+      --text: #1a1d23;
+      --text-mid: #4b5263;
+      --text-dim: #8f96a8;
+      --border: #e2e6ed;
+      --bg: #ffffff;
+      --bg-2: #f7f8f4;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: #fff; color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--olive); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 99;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 64px; height: 64px;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(10px);
+      position: sticky; top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 0 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 60px;
     }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; color: var(--text); text-decoration: none; }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { font-size: 11.5px; letter-spacing: 1.8px; text-transform: uppercase; color: #666; text-decoration: none; transition: color 0.2s; font-weight: 400; }
-    .nav-links a:hover { color: var(--olive); }
+    .nav-name { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; color: var(--text); }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--text-mid); }
+    .nav-links a:hover { color: var(--olive); text-decoration: none; }
+
+    /* LAYOUT */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+
+    .section-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--olive); margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Lora', serif; font-size: 1.9rem;
+      font-weight: 600; line-height: 1.2; margin-bottom: 2.5rem;
+    }
 
     /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 0 64px 80px;
-      border-bottom: 1px solid var(--border);
-      width: 100%;
+    #hero { padding: 5rem 0 4.5rem; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--olive-bg); color: var(--olive);
+      font-size: 0.75rem; font-weight: 500;
+      padding: 0.35rem 0.85rem; border-radius: 2rem; margin-bottom: 1.8rem;
     }
-    .hero-meta { display: flex; align-items: center; gap: 20px; margin-bottom: 32px; }
-    .hero-line { width: 40px; height: 1px; background: var(--olive); }
-    .hero-meta-text { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--olive); }
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(48px, 7vw, 88px);
-      font-weight: 400; line-height: 0.95;
-      color: var(--text); letter-spacing: -2px; margin-bottom: 40px;
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--olive-light); border-radius: 50%;
     }
-    .hero h1 em { font-style: italic; color: var(--olive); }
-    .hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
-    .hero-desc { font-size: 15.5px; color: #444; line-height: 1.75; max-width: 440px; font-weight: 400; }
-    .hero-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; flex-shrink: 0; }
-    .hero-role { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-align: right; }
-    .btn-row { display: flex; gap: 10px; }
+    .hero-name {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 600; line-height: 1.15; margin-bottom: 0.5rem;
+    }
+    .hero-role { font-size: 1.1rem; color: var(--text-mid); margin-bottom: 1.8rem; font-weight: 300; }
+    .hero-bio { font-size: 1rem; color: var(--text-mid); line-height: 1.85; max-width: 640px; margin-bottom: 2.5rem; }
+    .hero-bio strong { color: var(--text); font-weight: 600; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    /* BUTTONS */
     .btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 10px 22px; font-size: 12px; font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale; letter-spacing: 0.3px; text-decoration: none;
-      border-radius: 6px; transition: all 0.2s; border: none; cursor: pointer;
+      display: inline-block; padding: 0.7rem 1.6rem;
+      font-size: 0.85rem; font-weight: 500; border-radius: 4px;
+      transition: all 0.18s; font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer;
     }
-    .btn-dark { background: var(--text); color: #fff; }
-    .btn-dark:hover { background: var(--olive); }
-    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
-    .btn-ghost:hover { border-color: var(--olive); color: var(--olive); }
-
-    /* SECTIONS */
-    .section { padding: 100px 64px; border-bottom: 1px solid var(--border); width: 100%; }
-    .section-head { display: flex; align-items: baseline; gap: 20px; margin-bottom: 64px; }
-    .section-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-weight: 400; color: var(--muted); letter-spacing: 1px; }
-    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 400; color: var(--text); line-height: 1.1; }
-    .section-title em { font-style: italic; color: var(--olive); }
+    .btn-primary { background: var(--olive); color: #fff; }
+    .btn-primary:hover { background: var(--olive-light); text-decoration: none; }
+    .btn-outline { border: 1.5px solid var(--border); color: var(--text-mid); }
+    .btn-outline:hover { border-color: var(--olive); color: var(--olive); text-decoration: none; }
 
     /* ABOUT */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; width: 100%; }
-    .about-text p { font-size: 15.5px; color: #1a1a1a; line-height: 1.85; margin-bottom: 18px; font-weight: 400; }
-    .about-text strong { color: var(--olive); font-weight: 400; }
-    .stat-row { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--border); }
-    .stat-row:first-child { border-top: 1px solid var(--border); }
-    .stat-label { font-size: 11.5px; letter-spacing: 1px; color: #777; text-transform: uppercase; font-weight: 400; }
-    .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--text); text-align: right; }
-    .stat-value em { font-style: italic; color: var(--olive); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .about-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+
+    .credential-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .credential-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1rem 1.2rem;
+      background: var(--bg-2); border: 1px solid var(--border); border-radius: 6px;
+    }
+    .credential-icon { font-size: 1.2rem; line-height: 1; margin-top: 0.1rem; }
+    .credential-title { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 0.15rem; }
+    .credential-sub { font-size: 0.78rem; color: var(--text-dim); }
 
     /* PROJECTS */
-    .project-item {
-      display: grid; grid-template-columns: 80px 1fr auto;
-      align-items: start; gap: 40px;
-      padding: 40px 0; border-bottom: 1px solid var(--border);
+    .projects-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .project-card {
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 1.6rem 2rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 1rem; align-items: start;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .project-item:first-child { border-top: 1px solid var(--border); }
-    .project-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--muted); padding-top: 4px; }
-    .project-type { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--olive); margin-bottom: 10px; font-weight: 400; }
-    .project-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--text); margin-bottom: 14px; line-height: 1.1; }
-    .project-desc { font-size: 14.5px; color: #555; line-height: 1.7; max-width: 560px; margin-bottom: 20px; font-weight: 400; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { font-size: 11px; padding: 3px 11px; border-radius: 20px; background: var(--olive-l); color: var(--olive); border: 1px solid #ccd8b8; }
-    .project-links { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; padding-top: 4px; flex-shrink: 0; }
-    .proj-link { font-size: 12px; color: var(--olive); text-decoration: none; display: flex; align-items: center; gap: 6px; padding: 7px 16px; border: 1px solid var(--olive); border-radius: 5px; transition: all 0.2s; white-space: nowrap; }
-    .proj-link:hover { background: var(--olive); color: #fff; }
-    .proj-link.ghost { color: var(--muted); border-color: var(--border); }
-    .proj-link.ghost:hover { color: var(--olive); border-color: var(--olive); background: var(--olive-l); }
+    .project-card:hover { border-color: var(--olive); box-shadow: 0 2px 16px rgba(74,94,42,0.08); }
+    .project-type { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--olive); margin-bottom: 0.35rem; }
+    .project-name { font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+    .project-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 0.9rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .ptag { font-size: 0.7rem; font-weight: 500; padding: 0.22rem 0.65rem; background: var(--bg-2); border: 1px solid var(--border); border-radius: 3px; color: var(--text-mid); }
+    .project-link { font-size: 0.78rem; font-weight: 500; color: var(--olive); white-space: nowrap; display: flex; align-items: center; gap: 0.3rem; padding-top: 0.2rem; }
+    .project-link:hover { text-decoration: underline; }
 
     /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); width: 100%; }
-    .skill-cell { background: #fff; padding: 32px 28px; }
-    .skill-cell-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--olive); margin-bottom: 20px; }
-    .skill-item { font-size: 13.5px; color: #222; padding: 7px 0; border-bottom: 1px solid var(--border); font-weight: 400; }
-    .skill-item:last-child { border-bottom: none; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .skill-block { padding: 1.4rem 1.6rem; background: var(--bg-2); border: 1px solid var(--border); border-radius: 6px; }
+    .skill-block-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--olive); margin-bottom: 0.9rem; }
+    .skill-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .skill-block ul li { font-size: 0.85rem; color: var(--text-mid); }
 
     /* CONTACT */
-    .contact-inner { max-width: 600px; }
-    .contact-text { font-size: 15.5px; color: #444; line-height: 1.8; margin-bottom: 40px; font-weight: 400; }
-    .contact-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    #contact { background: var(--bg-2); }
+    .contact-inner { text-align: center; max-width: 520px; margin: 0 auto; }
+    .contact-sub { font-size: 0.95rem; color: var(--text-mid); margin-bottom: 2rem; line-height: 1.8; }
+    .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
     /* FOOTER */
-    footer { padding: 28px 64px; display: flex; justify-content: space-between; align-items: center; }
-    footer p { font-size: 12px; color: var(--muted); }
-    footer a { color: var(--olive); text-decoration: none; }
+    footer {
+      padding: 1.8rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--border);
+    }
+    .footer-left, .footer-right { font-size: 0.82rem; color: var(--text-dim); }
 
     /* REVEAL */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal { transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.will-animate { opacity: 0; transform: translateY(20px); }
+    .reveal.will-animate.visible { opacity: 1; transform: none; }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      nav { padding: 0 24px; }
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      nav { padding: 0 1.2rem; }
       .nav-links { display: none; }
-      .hero { padding: 100px 24px 60px; }
-      .hero-bottom { flex-direction: column; align-items: flex-start; }
-      .hero-actions { align-items: flex-start; }
-      .hero-role { text-align: left; }
-      .section { padding: 60px 24px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .project-item { grid-template-columns: 1fr; gap: 16px; }
-      .project-num { display: none; }
-      .project-links { flex-direction: row; align-items: flex-start; }
+      .container { padding: 0 1.2rem; }
+      section { padding: 3.5rem 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
-      footer { flex-direction: column; gap: 8px; padding: 24px; }
+      .project-card { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">Xhensilda Allka</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <nav>
+    <span class="nav-name">Xhensilda Allka</span>
+    <ul class="nav-links">
+      <li><a href="#about">Background</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<div class="hero">
-  <div class="hero-meta">
-    <div class="hero-line"></div>
-    <span class="hero-meta-text">Research Engineer · Barcelona Supercomputing Center</span>
+  <!-- HERO -->
+  <div class="container">
+    <section id="hero">
+      <div class="hero-badge">Open to collaborations</div>
+      <h1 class="hero-name">Xhensilda Allka, PhD</h1>
+      <p class="hero-role">Data Scientist &amp; AI Engineer &middot; Barcelona</p>
+      <p class="hero-bio">
+        I help turn raw, messy data into working AI solutions. With a <strong>PhD (Cum Laude) in Data Science &amp; Machine Learning from UPC Barcelona</strong> and hands-on experience at the <strong>Barcelona Supercomputing Center</strong>, I specialise in machine learning, sensor data quality, and building end-to-end AI systems — from research to deployed product.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="#projects" class="btn btn-outline">See my work</a>
+        <a href="https://askxhensilda.netlify.app" target="_blank" class="btn btn-outline">Talk to my AI ✦</a>
+      </div>
+    </section>
   </div>
-  <h1>Xhensilda<br><em>Allka</em></h1>
-  <div class="hero-bottom">
-    <p class="hero-desc">PhD (Cum Laude) in Data Science & Machine Learning. Building at the intersection of AI, data quality, and real-world sensor systems — research that actually ships.</p>
-    <div class="hero-actions">
-      <p class="hero-role">Open to collaborations</p>
-      <div class="btn-row">
-        <a href="https://askxhensilda.netlify.app" target="_blank" class="btn btn-dark">Talk to my AI</a>
-        <a href="https://www.linkedin.com/in/xhensilda-allka-aab999124/" target="_blank" class="btn btn-ghost">LinkedIn</a>
-        <a href="https://github.com/XhensildaAllka" target="_blank" class="btn btn-ghost">GitHub</a>
+
+  <!-- BACKGROUND -->
+  <div class="container">
+    <section id="about">
+      <p class="section-label reveal">Background</p>
+      <h2 class="section-title reveal">Research-backed,<br>product-minded.</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I hold a <strong>PhD (Cum Laude) in Data Science &amp; Machine Learning from Universitat Politècnica de Catalunya (UPC)</strong>, where my research focused on improving the data quality of low-cost IoT air quality sensors using deep learning, anomaly detection, and probabilistic methods — resulting in <strong>7 IEEE publications</strong>.
+          </p>
+          <p>
+            I currently work as a Research Engineer at the <strong>Barcelona Supercomputing Center (BSC)</strong>, one of Europe's leading HPC research institutions, working on high-performance computing and numerical methods.
+          </p>
+          <p>
+            Beyond research, I build AI products end-to-end. I'm open to <strong>freelance collaborations</strong> in data science, ML engineering, and AI product development.
+          </p>
+        </div>
+        <div class="reveal">
+          <ul class="credential-list">
+            <li class="credential-item">
+              <span class="credential-icon">🎓</span>
+              <div>
+                <div class="credential-title">PhD (Cum Laude) in Data Science &amp; ML</div>
+                <div class="credential-sub">Universitat Politècnica de Catalunya (UPC) · 7 IEEE publications</div>
+              </div>
+            </li>
+            <li class="credential-item">
+              <span class="credential-icon">🏛️</span>
+              <div>
+                <div class="credential-title">Research Engineer</div>
+                <div class="credential-sub">Barcelona Supercomputing Center (BSC)</div>
+              </div>
+            </li>
+            <li class="credential-item">
+              <span class="credential-icon">🌍</span>
+              <div>
+                <div class="credential-title">Languages</div>
+                <div class="credential-sub">Albanian · English · Spanish · Italian</div>
+              </div>
+            </li>
+            <li class="credential-item">
+              <span class="credential-icon">📍</span>
+              <div>
+                <div class="credential-title">Based in Barcelona</div>
+                <div class="credential-sub">Available remotely worldwide</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="container">
+    <section id="projects">
+      <p class="section-label reveal">Projects</p>
+      <h2 class="section-title reveal">Selected work.</h2>
+      <div class="projects-list">
+
+        <div class="project-card reveal">
+          <div>
+            <p class="project-type">Machine Learning · Data Science · Research</p>
+            <h3 class="project-name">Low-Cost O₃ Sensor Calibration</h3>
+            <p class="project-desc">ML and data science for low-cost sensor data quality improvement. Comparing MLR, SVR, KNN, FFNN and Gaussian Process models for calibrating electrochemical O₃ sensors against a reference monitoring station in Barcelona. Full pipeline with outlier removal, standardisation, and 5-fold cross-validation. Real dataset included.</p>
+            <div class="project-tags">
+              <span class="ptag">Python</span>
+              <span class="ptag">scikit-learn</span>
+              <span class="ptag">PyTorch</span>
+              <span class="ptag">Gaussian Process</span>
+              <span class="ptag">IoT</span>
+              <span class="ptag">Air Quality</span>
+            </div>
+          </div>
+          <a href="https://github.com/XhensildaAllka/sensor-calibration" target="_blank" class="project-link">GitHub ↗</a>
+        </div>
+
+        <div class="project-card reveal">
+          <div>
+            <p class="project-type">AI Product · Full-Stack</p>
+            <h3 class="project-name">ARIA — AI Personal Assistant</h3>
+            <p class="project-desc">An AI assistant that manages tasks, calendar, and email — a private space where everything lives in one web app. ARIA provides true agentic behaviour: it remembers context, learns preferences, reads and summarises emails, and speaks back to the user. Built end-to-end by directing AI tools.</p>
+            <div class="project-tags">
+              <span class="ptag">LLMs</span>
+              <span class="ptag">Groq · Claude</span>
+              <span class="ptag">Voice STT/TTS</span>
+              <span class="ptag">Gmail OAuth</span>
+              <span class="ptag">FastAPI</span>
+              <span class="ptag">React</span>
+              <span class="ptag">PostgreSQL</span>
+            </div>
+          </div>
+          <a href="https://web-production-3a71e1.up.railway.app/" target="_blank" class="project-link">Live demo ↗</a>
+        </div>
+
+        <div class="project-card reveal">
+          <div>
+            <p class="project-type">AI Assistant · Live</p>
+            <h3 class="project-name">Ask Xhensilda — AI Chat</h3>
+            <p class="project-desc">A personal AI assistant built on the Claude API — designed to answer questions about my background, expertise, and work. A live example of how I turn APIs into usable, deployed products.</p>
+            <div class="project-tags">
+              <span class="ptag">Claude API</span>
+              <span class="ptag">HTML/JS</span>
+              <span class="ptag">Netlify</span>
+              <span class="ptag">Prompt Engineering</span>
+            </div>
+          </div>
+          <a href="https://askxhensilda.netlify.app/" target="_blank" class="project-link">Try it ↗</a>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="container">
+    <section id="skills">
+      <p class="section-label reveal">Skills</p>
+      <h2 class="section-title reveal">What I work with.</h2>
+      <div class="skills-grid">
+        <div class="skill-block reveal">
+          <p class="skill-block-title">Data Science &amp; ML</p>
+          <ul>
+            <li>Machine Learning (MLR, SVR, KNN, RF)</li>
+            <li>Gaussian Processes</li>
+            <li>Anomaly Detection</li>
+            <li>IoT Sensor Data Quality</li>
+            <li>Cross-validation &amp; Model Selection</li>
+          </ul>
+        </div>
+        <div class="skill-block reveal">
+          <p class="skill-block-title">Deep Learning &amp; AI</p>
+          <ul>
+            <li>LSTM, BiLSTM, Transformers</li>
+            <li>Autoencoders, FFNN</li>
+            <li>LLMs &amp; Prompt Engineering</li>
+            <li>Agentic System Design</li>
+            <li>Multi-model Routing</li>
+          </ul>
+        </div>
+        <div class="skill-block reveal">
+          <p class="skill-block-title">Tools &amp; Engineering</p>
+          <ul>
+            <li>Python · R · Matlab</li>
+            <li>PyTorch · scikit-learn</li>
+            <li>PostgreSQL · FastAPI</li>
+            <li>Claude · Groq · ElevenLabs</li>
+            <li>Git · HPC Environments</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <p class="section-label reveal">Contact</p>
+        <h2 class="section-title reveal">Let's work together.</h2>
+        <p class="contact-sub reveal">
+          Have a data science or AI project in mind? I'm open to freelance collaborations — feel free to reach out and we can discuss how I can help.
+        </p>
+        <div class="contact-links reveal">
+          <a href="mailto:xhensildaallka@gmail.com" class="btn btn-primary">Send an email</a>
+          <a href="https://www.linkedin.com/in/xhensilda-allka-aab999124/" target="_blank" class="btn btn-outline">LinkedIn</a>
+          <a href="https://github.com/XhensildaAllka" target="_blank" class="btn btn-outline">GitHub</a>
+          <a href="https://scholar.google.com/citations?user=1EeJD2oAAAAJ&hl=es" target="_blank" class="btn btn-outline">Google Scholar</a>
+          <a href="https://askxhensilda.netlify.app/" target="_blank" class="btn btn-outline">Ask my AI ✦</a>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<div class="section" id="about">
-  <div class="section-head reveal">
-    <span class="section-num">01</span>
-    <h2 class="section-title">About <em>me</em></h2>
-  </div>
-  <div class="about-grid reveal">
-    <div class="about-text">
-      <p>I'm a data scientist and researcher specialising in machine learning applied to real-world, imperfect data — specifically improving the reliability of <strong>low-cost IoT air quality sensors</strong> through deep learning, anomaly detection, and probabilistic methods.</p>
-      <p>I completed my <strong>PhD (Cum Laude)</strong> at Universitat Politècnica de Catalunya and I'm currently a Research Engineer at the <strong>Barcelona Supercomputing Center</strong>, working on high-performance computing — optimising algebraic multigrid solvers and contributing to a CUDA C multigrid library.</p>
-      <p>Beyond research, I'm genuinely curious about building things with AI. I recently designed and shipped a full AI personal assistant from scratch — combining multiple LLMs, voice interfaces, and Gmail integration.</p>
-    </div>
-    <div>
-      <div class="stat-row"><span class="stat-label">Publications</span><span class="stat-value">7 <em>IEEE papers</em></span></div>
-      <div class="stat-row"><span class="stat-label">Degree</span><span class="stat-value">PhD <em>Cum Laude</em></span></div>
-      <div class="stat-row"><span class="stat-label">Institution</span><span class="stat-value"><em>UPC</em> Barcelona</span></div>
-      <div class="stat-row"><span class="stat-label">Current role</span><span class="stat-value"><em>BSC</em> Research Engineer</span></div>
-      <div class="stat-row"><span class="stat-label">Languages</span><span class="stat-value">Albanian · English<br>Spanish · Italian</span></div>
-    </div>
-  </div>
-</div>
+  <footer>
+    <span class="footer-left">Xhensilda Allka · Data Scientist &amp; AI Engineer</span>
+    <span class="footer-right">Barcelona, 2025</span>
+  </footer>
 
-<div class="section" id="projects">
-  <div class="section-head reveal">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Selected <em>projects</em></h2>
-  </div>
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => el.classList.add('will-animate'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -10px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  </script>
 
-  <div class="project-item reveal">
-    <div class="project-num">01</div>
-    <div>
-      <div class="project-type">Research · ML · Data Science</div>
-      <div class="project-name">Low-Cost Sensor Calibration</div>
-      <p class="project-desc">ML and data science for low-cost sensor data quality improvement. Comparing MLR, SVR, KNN, FFNN and Gaussian Process models for calibrating electrochemical O₃ sensors against a reference monitoring station in Barcelona. Full pipeline with outlier removal, standardisation and 5-fold cross-validation.</p>
-      <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">PyTorch</span>
-        <span class="tag">Gaussian Process</span><span class="tag">IoT</span><span class="tag">Air Quality</span>
-      </div>
-    </div>
-    <div class="project-links">
-      <a href="https://github.com/XhensildaAllka/sensor-calibration" target="_blank" class="proj-link">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="https://github.com/XhensildaAllka/sensor-calibration/tree/main/data" target="_blank" class="proj-link ghost">Dataset</a>
-    </div>
-  </div>
-
-  <div class="project-item reveal">
-    <div class="project-num">02</div>
-    <div>
-      <div class="project-type">AI Product · Full Stack</div>
-      <div class="project-name">ARIA — AI Personal Assistant</div>
-      <p class="project-desc">An AI assistant that manages your tasks, calendar, and email — your private space where you have everything in one web app. ARIA provides true AI agentic behaviour: it remembers context, learns your preferences, reads and summarises your emails, and speaks back to you. Built entirely by directing AI tools — no traditional coding.</p>
-      <div class="project-tags">
-        <span class="tag">LLM</span><span class="tag">Groq · Claude</span><span class="tag">Voice STT/TTS</span>
-        <span class="tag">Gmail OAuth</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">PostgreSQL</span>
-      </div>
-    </div>
-    <div class="project-links">
-      <a href="https://web-production-3a71e1.up.railway.app/" target="_blank" class="proj-link">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Live Demo
-      </a>
-    </div>
-  </div>
-</div>
-
-<div class="section" id="skills">
-  <div class="section-head reveal">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Technical <em>expertise</em></h2>
-  </div>
-  <div class="skills-grid reveal">
-    <div class="skill-cell">
-      <div class="skill-cell-title">Machine Learning</div>
-      <div class="skill-item">MLR, SVR, KNN, Random Forest</div>
-      <div class="skill-item">Gaussian Processes</div>
-      <div class="skill-item">Cross-validation</div>
-      <div class="skill-item">scikit-learn</div>
-    </div>
-    <div class="skill-cell">
-      <div class="skill-cell-title">Deep Learning</div>
-      <div class="skill-item">LSTM, BiLSTM, Transformers</div>
-      <div class="skill-item">Autoencoders, FFNN</div>
-      <div class="skill-item">Anomaly detection</div>
-      <div class="skill-item">PyTorch</div>
-    </div>
-    <div class="skill-cell">
-      <div class="skill-cell-title">AI & LLMs</div>
-      <div class="skill-item">Prompt engineering</div>
-      <div class="skill-item">Multi-model routing</div>
-      <div class="skill-item">Agentic system design</div>
-      <div class="skill-item">Claude, Groq, ElevenLabs</div>
-    </div>
-    <div class="skill-cell">
-      <div class="skill-cell-title">Data & Tools</div>
-      <div class="skill-item">Python, R, Matlab</div>
-      <div class="skill-item">IoT sensor data</div>
-      <div class="skill-item">Spatiotemporal analysis</div>
-      <div class="skill-item">PostgreSQL</div>
-    </div>
-  </div>
-</div>
-
-<div class="section" id="contact">
-  <div class="section-head reveal">
-    <span class="section-num">04</span>
-    <h2 class="section-title">Get in <em>touch</em></h2>
-  </div>
-  <div class="contact-inner reveal">
-    <p class="contact-text">If you have a problem at the intersection of data quality, ML, or AI systems — or just want to connect — I'm always happy to have a conversation.</p>
-    <div class="contact-row">
-      <a href="https://askxhensilda.netlify.app" target="_blank" class="btn btn-dark">Talk to my AI Assistant</a>
-      <a href="mailto:xhensildaallka@gmail.com" class="btn btn-ghost">Email me</a>
-      <a href="https://www.linkedin.com/in/xhensilda-allka-aab999124/" target="_blank" class="btn btn-ghost">LinkedIn</a>
-      <a href="https://scholar.google.com/citations?user=1EeJD2oAAAAJ&hl=es" target="_blank" class="btn btn-ghost">Google Scholar</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2025 Xhensilda Allka · Barcelona</p>
-  <p><a href="https://github.com/XhensildaAllka" target="_blank">GitHub</a> · <a href="https://askxhensilda.netlify.app" target="_blank">AI Assistant</a></p>
-</footer>
-
-<script>
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
